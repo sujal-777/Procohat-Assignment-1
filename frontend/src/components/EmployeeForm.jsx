@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-const EmployeeForm = ({ onSubmit, employeeData = {} }) => {
+const EmployeeForm = ({ onSubmit, initialData = {} }) => {
   const [employee, setEmployee] = useState({
-    name: '',
-    email: '',
-    mobile: '',
-    designation: '',
-    gender: '',
-    course: '',
-    ...employeeData
+    name: initialData.name || '',
+    email: initialData.email || '',
+    mobile: initialData.mobile || '',
+    designation: initialData.designation || '',
+    gender: initialData.gender || '',
+    course: initialData.course || '',
+    image: initialData.image || ''
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setEmployee({ ...employee, [name]: value });
+    setEmployee({ ...employee, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
@@ -22,21 +21,20 @@ const EmployeeForm = ({ onSubmit, employeeData = {} }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {['name', 'email', 'mobile', 'designation', 'course'].map((field) => (
-        <div key={field}>
-          <label>{field.charAt(0).toUpperCase() + field.slice(1)}:</label>
-          <input type="text" name={field} value={employee[field]} onChange={handleChange} required />
+    <form onSubmit={handleSubmit} className="space-y-4">
+      {Object.keys(employee).map((key) => (
+        <div key={key}>
+          <label className="block font-medium text-gray-700">{key}</label>
+          <input
+            type="text"
+            name={key}
+            value={employee[key]}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded"
+          />
         </div>
       ))}
-      <div>
-        <label>Gender:</label>
-        <select name="gender" value={employee.gender} onChange={handleChange}>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
-      </div>
-      <button type="submit">Submit</button>
+      <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
     </form>
   );
 };

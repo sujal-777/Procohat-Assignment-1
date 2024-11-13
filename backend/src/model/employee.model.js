@@ -1,9 +1,11 @@
-import mongoose from "mongoose";
+// src/models/employee.model.js
+
+import mongoose from 'mongoose';
 
 const employeeSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  mobile: String,
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  mobile: { type: String, required: true },
   designation: String,
   gender: String,
   course: String,
@@ -11,6 +13,5 @@ const employeeSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-// Exporting as default
-const Employee = mongoose.model("Employee", employeeSchema);
+const Employee = mongoose.model('Employee', employeeSchema);
 export default Employee;
