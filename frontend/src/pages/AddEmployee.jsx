@@ -16,7 +16,7 @@ const AddEmployee = () => {
 
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">Add New Employee</h2>
+      <h2 className="text-xl font-bold mb-4">Add New Details</h2>
       <EmployeeForm onSubmit={handleAddEmployee} />
     </div>
   );

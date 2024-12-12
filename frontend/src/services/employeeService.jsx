@@ -2,8 +2,52 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:5000/api/employees';
 
-export const fetchEmployees = () => axios.get(API_URL);
-export const addEmployee = (employeeData) => axios.post(API_URL, employeeData);
-export const getEmployeeById = (id) => axios.get(`${API_URL}/${id}`);
-export const updateEmployee = (id, employeeData) => axios.put(`${API_URL}/${id}`, employeeData);
-export const deleteEmployee = (id) => axios.delete(`${API_URL}/${id}`);
+export const fetchEmployees = async () => {
+    try {
+      const response = await axios.get(API_URL);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching employees:", error);
+      throw error;
+    }
+  };
+  
+  export const addEmployee = async (employeeData) => {
+    try {
+      const response = await axios.post(API_URL, employeeData);
+      return response.data;
+    } catch (error) {
+      console.error("Error adding employee:", error);
+      throw error;
+    }
+  };
+  
+  export const getEmployeeById = async (id) => {
+    try {
+      const response = await axios.get(`${API_URL}/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching employee with ID ${id}:`, error);
+      throw error;
+    }
+  };
+  
+  export const updateEmployee = async (id, employeeData) => {
+    try {
+      const response = await axios.put(`${API_URL}/${id}`, employeeData);
+      return response.data;
+    } catch (error) {
+      console.error(`Error updating employee with ID ${id}:`, error);
+      throw error;
+    }
+  };
+  
+  export const deleteEmployee = async (id) => {
+    try {
+      const response = await axios.delete(`${API_URL}/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error deleting employee with ID ${id}:`, error);
+      throw error;
+    }
+  };

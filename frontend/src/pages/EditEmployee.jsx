@@ -23,7 +23,7 @@ const EditEmployee = () => {
 
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">Edit Employee</h2>
+      <h2 className="text-xl font-bold mb-4">Edit Details</h2>
       {employeeData && <EmployeeForm onSubmit={handleEditEmployee} initialData={employeeData} />}
     </div>
   );

@@ -1,7 +1,7 @@
-// src/controllers/employeeController.js
-
+import mongoose from 'mongoose';
 import Employee from '../model/employee.model.js';
 
+// Get all employees
 export const getEmployees = async (req, res) => {
   try {
     const employees = await Employee.find();
@@ -11,9 +11,10 @@ export const getEmployees = async (req, res) => {
   }
 };
 
+// Create a new employee
 export const createEmployee = async (req, res) => {
-  const employee = new Employee(req.body);
   try {
+    const employee = new Employee(req.body);
     const newEmployee = await employee.save();
     res.status(201).json(newEmployee);
   } catch (error) {
@@ -21,8 +22,12 @@ export const createEmployee = async (req, res) => {
   }
 };
 
+// Get a single employee by ID
 export const getEmployeeById = async (req, res) => {
   try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ message: 'Invalid ID format' });
+    }
     const employee = await Employee.findById(req.params.id);
     if (!employee) {
       return res.status(404).json({ message: 'Employee not found' });
@@ -33,8 +38,12 @@ export const getEmployeeById = async (req, res) => {
   }
 };
 
+// Update an employee by ID
 export const updateEmployee = async (req, res) => {
   try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ message: 'Invalid ID format' });
+    }
     const updatedEmployee = await Employee.findByIdAndUpdate(
       req.params.id,
       req.body,
@@ -49,13 +58,17 @@ export const updateEmployee = async (req, res) => {
   }
 };
 
+// Delete an employee by ID
 export const deleteEmployee = async (req, res) => {
   try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ message: 'Invalid ID format' });
+    }
     const employee = await Employee.findByIdAndDelete(req.params.id);
     if (!employee) {
       return res.status(404).json({ message: 'Employee not found' });
     }
-    res.status(200).json({ message: 'Employee deleted' });
+    res.status(200).json({ message: 'Employee deleted successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
