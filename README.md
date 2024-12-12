@@ -1,4 +1,4 @@
-# Employee Management Dashboard
+# Hospital Management Dashboard
 
 This is a MERN stack application that serves as an Employee Management Dashboard. It includes functionalities to create, view, edit, and delete employee details. The project has a frontend interface built with Vite-React and styled with Tailwind CSS, while the backend is built using Express.js with MongoDB for data storage.
 
