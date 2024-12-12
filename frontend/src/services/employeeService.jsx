@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/employees';
+const API_URL = 'https://hospital-backend-alpha.vercel.app/api/employees';
 
 export const fetchEmployees = async () => {
     try {

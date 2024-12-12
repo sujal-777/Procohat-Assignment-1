@@ -12,7 +12,7 @@ const Dashboard = () => {
   // Fetch employees from the backend
   const fetchEmployees = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/employees');
+      const response = await axios.get('https://hospital-backend-alpha.vercel.app/api/employees');
       setEmployees(response.data);
     } catch (error) {
       console.error('Error fetching employees', error);
@@ -25,7 +25,7 @@ const Dashboard = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/employees/${id}`);
+      await axios.delete(`https://hospital-backend-alpha.vercel.app/api/employees/${id}`);
       fetchEmployees(); // Refresh the list after deletion
     } catch (error) {
       console.error('Failed to delete employee', error);

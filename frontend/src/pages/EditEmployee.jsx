@@ -10,14 +10,14 @@ const EditEmployee = () => {
 
   useEffect(() => {
     const fetchEmployee = async () => {
-      const response = await axios.get(`http://localhost:5000/api/employees/${id}`);
+      const response = await axios.get(`https://hospital-backend-alpha.vercel.app/api/employees/${id}`);
       setEmployeeData(response.data);
     };
     fetchEmployee();
   }, [id]);
 
   const handleEditEmployee = async (employee) => {
-    await axios.put(`http://localhost:5000/api/employees/${id}`, employee);
+    await axios.put(`https://hospital-backend-alpha.vercel.app/api/employees/${id}`, employee);
     navigate('/');
   };
 
