@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://hospital-backend-alpha.vercel.app/api/employees';
+const API_URL = `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/employees`;
 
 export const fetchEmployees = async () => {
     try {
