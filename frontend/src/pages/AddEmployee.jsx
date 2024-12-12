@@ -7,7 +7,7 @@ const AddEmployee = () => {
 
   const handleAddEmployee = async (employee) => {
     try {
-      await axios.post('https://hospital-backend-alpha.vercel.app/api/employees', employee);
+      await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/employees`, employee);
       navigate('/');  // Redirects to Dashboard after adding
     } catch (error) {
       console.error("Failed to add employee", error);
