@@ -14,6 +14,7 @@ const Dashboard = () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/employees`);
       setEmployees(response.data);
+      console.log(import.meta.env.VITE_REACT_APP_BACKEND_BASEURL)
     } catch (error) {
       console.error('Error fetching employees', error);
     }

@@ -1,31 +1,15 @@
 {
-    "version": 2,
-    "name": "mern-dashboard",
-    "builds": [
-      {
-        "src": "frontend/package.json",
-        "use": "@vercel/static-build",
-        "config": { "distDir": "build" }
-      },
-      {
-        "src": "backend/server.js",
-        "use": "@vercel/node"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/api/(.*)",
-        "dest": "backend/server.js"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "frontend/build/index.html"
-      }
-    ],
-    "env": {
-      "MONGO_URI": "mongodb+srv://Whitefield:R321BUJXuTIYZX9P@cluster0.pnsuo.mongodb.net/Whitefield?retryWrites=true&w=majority&appName=Cluster0",
-      "PORT": "5000"
-      
-    }
-  }
-  
+  "version": 2,
+  "builds": [
+   {
+       "src": "./index.js",
+       "use": "@vercel/node"
+   }
+  ],
+  "routes": [
+   {
+       "src": "/(.*)",
+       "dest": "/"
+   }
+  ]
+}
