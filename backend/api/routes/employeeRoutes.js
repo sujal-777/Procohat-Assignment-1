@@ -7,7 +7,7 @@ import {
   getEmployeeById,
   updateEmployee,
   deleteEmployee,
-} from '../controllers/employee.controller.js';
+} from '../../api/controllers/employee.controller.js';
 
 const router = express.Router();
 

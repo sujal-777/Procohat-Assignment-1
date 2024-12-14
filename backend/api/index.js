@@ -11,12 +11,27 @@ import employeeRoutes from './routes/employeeRoutes.js';
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Define the whitelist
+const whitelist = ['http://localhost:5173'];
+
+// Configure CORS options
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true); // Allow access
+    } else {
+      callback(new Error('Not allowed by CORS')); // Deny access
+    }
+  },
+};
+
 // Middleware
 app.use(express.json());
 app.use(cors());
 
 // Routes
-app.use('/api/employees', employeeRoutes);
+app.use('/employees', employeeRoutes);
+app.get('/test', (req, res) => res.send("Express on Vercel"))
 
 // Connect to MongoDB and Start the Server
 mongoose.connect(process.env.MONGODB_URI)

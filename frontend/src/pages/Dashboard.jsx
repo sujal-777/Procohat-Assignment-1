@@ -12,7 +12,7 @@ const Dashboard = () => {
   // Fetch employees from the backend
   const fetchEmployees = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/employees`);
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/employees`);
       setEmployees(response.data);
       console.log(import.meta.env.VITE_REACT_APP_BACKEND_BASEURL)
     } catch (error) {
@@ -26,7 +26,7 @@ const Dashboard = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/employees/${id}`);
+      await axios.delete(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/employees/${id}`);
       fetchEmployees(); // Refresh the list after deletion
     } catch (error) {
       console.error('Failed to delete employee', error);
